@@ -1,0 +1,23 @@
+# .github/FUNDING.yml (detailed)
+github: 
+  - "your-github-sponsors-username"
+
+patreon: "your-patreon-name"
+
+ko_fi: "your-kofi-name"
+
+open_collective: "your-open-collective-name"
+
+buy_me_a_coffee: "your-bmc-username"
+
+liberapay: "your-liberapay-username"
+paypal: "https://www.paypal.me/your-paypal-link"
+
+custom:
+  - type: "website"
+    url: "https://example.com/donate"
+    label: "Donate via website"
+    description: "If none of the listed platforms work for you, donate directly here."
+  - type: "message"
+    label: "Why support Fragments of Memory?"
+    description: "Sự đóng góp của bạn giúp duy trì server, phát triển nội dung mới, trả phí âm nhạc/asset cho game, và hỗ trợ team The Next Generation."
