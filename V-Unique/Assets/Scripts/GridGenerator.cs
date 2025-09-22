@@ -6,9 +6,9 @@ public class GridGenerator : MonoBehaviour
 {
     [Header("Elements")]
     [SerializeField] private GameObject spherePrefab;
+
     [Header("Settings")]
-    [SerializeField] private GameObject gridSize;
-   
+    [SerializeField] private float gridSize; // Đổi từ GameObject sang float
 
     void Start()
     {
@@ -17,8 +17,17 @@ public class GridGenerator : MonoBehaviour
 
     void GenerateGrid()
     {
-       Vector3 startPosition = Vertor2.left *(float)gridSize/2  + Vector2.down * (float)gridSize/2;
+        Vector3 startPosition = Vector2.left * gridSize / 2 + Vector2.down * gridSize / 2;
+        for (int x = 0; x <= gridSize; x++)
+        {
+            for (int y = 0; y <= gridSize; y++)
+            {
+                Vector3 spawnPosition = startPosition + Vector3.right * x + Vector3.up * y;
 
-        Instantiate(spherePrefab, startPosition, Quaternion.identity,transform );
+                Instantiate(spherePrefab, spawnPosition, Quaternion.identity, transform);
+            }
+          
+        }
+      
     }
 }
