@@ -18,7 +18,9 @@ public class GridGenerator : MonoBehaviour
     void GenerateGrid()
     {
         Vector3 startPosition = Vector2.left * gridSize / 2 + Vector2.down * gridSize / 2;
-        for (int x = 0; x <= gridSize; x++)
+        startPosition.x +=  0.5f;
+        startPosition.y +=  0.5f;
+        for (int x = 0; x < gridSize; x++)
         {
             for (int y = 0; y <= gridSize; y++)
             {
@@ -26,7 +28,7 @@ public class GridGenerator : MonoBehaviour
 
                 Instantiate(spherePrefab, spawnPosition, Quaternion.identity, transform);
             }
-          
+
         }
       
     }
