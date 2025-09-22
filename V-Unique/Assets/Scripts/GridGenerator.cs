@@ -8,9 +8,7 @@ public class GridGenerator : MonoBehaviour
     [SerializeField] private GameObject spherePrefab;
     [Header("Settings")]
     [SerializeField] private GameObject gridSize;
-    public int gridWidth = 10;
-    public int gridHeight = 10;
-    public float tileSpacing = 1.1f;
+   
 
     void Start()
     {
@@ -19,13 +17,8 @@ public class GridGenerator : MonoBehaviour
 
     void GenerateGrid()
     {
-        for (int x = 0; x < gridWidth; x++)
-        {
-            for (int y = 0; y < gridHeight; y++)
-            {
-                Vector3 position = new Vector3(x * tileSpacing, 0, y * tileSpacing);
-                Instantiate(tilePrefab, position, Quaternion.identity, transform);
-            }
-        }
+       Vector3 startPosition = Vertor2.left *(float)gridSize/2  + Vector2.down * (float)gridSize/2;
+
+        Instantiate(spherePrefab, startPosition, Quaternion.identity,transform );
     }
 }
