@@ -150,6 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spherePrefab: {fileID: 4239234789288038091, guid: 806e81039e5ed424585036d437abbe03, type: 3}
   gridSize: 3
+  gridScale: 1
 --- !u!4 &80800994
 Transform:
   m_ObjectHideFlags: 0
