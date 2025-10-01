@@ -6,8 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
+    path: Assets/Scenes/MainMenu.unity
+    guid: 8de666611396f5943beb0f5ef65abe6f
+  - enabled: 1
+    path: "Assets/Scenes/Ph\xF2ng ng\u1EE7.unity"
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Cutscene.unity
+    guid: 5e85b1db6927c4b4b8e48b21acebb90c
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 43ad03294c0f3ec46bf0945e703f1d82, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
