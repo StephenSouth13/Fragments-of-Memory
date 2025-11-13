@@ -8,8 +8,10 @@ public class PuzzleManager : MonoBehaviour
     public GameObject piecePrefab;
     // CẦN GÁN: Mảng chứa 9 mảnh ghép (Sprites)
     public Sprite[] allPuzzlePieces; 
-    // CẦN GÁN: Prefab cho ô gợi ý (Tạo ở bước 3)
-    public GameObject hintPrefab; 
+    
+    // CẦN GÁN: Kéo một trong 9 ô Hint Cố định từ Hierarchy vào đây để lấy kích thước
+    // Sẽ là SpriteRenderer của một ô Khuôn đã tạo sẵn
+    public SpriteRenderer hintReference; 
     
     public int cols = 3;
     public int rows = 3;
@@ -32,14 +34,25 @@ public class PuzzleManager : MonoBehaviour
             Debug.LogError("Lỗi: Mảng 'All Puzzle Pieces' trống!");
             return;
         }
-
-        // Lấy kích thước mảnh ghép từ Sprite đầu tiên
-        pieceWidth = allPuzzlePieces[0].bounds.size.x;
-        pieceHeight = allPuzzlePieces[0].bounds.size.y;
+        
+        // ✅ BƯỚC MỚI: KIỂM TRA VÀ LẤY KÍCH THƯỚC TỪ KHUÔN ĐÃ TẠO SẴN
+        if (hintReference == null)
+        {
+            Debug.LogError("Lỗi: Cần gán 'Hint Reference' (Sprite Renderer của một ô Khuôn) trong Inspector!");
+            return;
+        }
+        
+        // Lấy kích thước mảnh ghép dựa trên kích thước của ô Hint mẫu đã tạo trong Scene
+        pieceWidth = hintReference.bounds.size.x;
+        pieceHeight = hintReference.bounds.size.y;
+        
+        Debug.Log($"Kích thước mảnh ghép (được lấy từ Khuôn): {pieceWidth}x{pieceHeight}");
 
         // Tính toán tổng kích thước lưới và điều chỉnh vị trí PuzzleManager về trung tâm
         float totalWidth = cols * pieceWidth;
         float totalHeight = rows * pieceHeight;
+        
+        // Vị trí (0,0) của PuzzleManager sẽ là tâm của toàn bộ lưới Hint
         transform.position = new Vector3(-totalWidth / 2 + pieceWidth / 2, -totalHeight / 2 + pieceHeight / 2, 0);
 
         // Trộn ngẫu nhiên danh sách các mảnh ghép
@@ -47,34 +60,16 @@ public class PuzzleManager : MonoBehaviour
 
         int pieceIndex = 0;
         
-        // --- BƯỚC 1: TẠO LƯỚI GỢI Ý (Hint Grid) ---
-        if (hintPrefab != null)
-        {
-            for (int r = 0; r < rows; r++)
-            {
-                for (int c = 0; c < cols; c++)
-                {
-                    float hintX = c * pieceWidth;
-                    float hintY = r * pieceHeight;
-
-                    // Tạo hint, đặt Z cao hơn nền nhưng thấp hơn mảnh ghép
-                    GameObject hintGO = Instantiate(hintPrefab, transform);
-                    hintGO.transform.position = new Vector3(hintX, hintY, 0.5f); 
-                    
-                    // Thiết lập kích thước hint khớp với mảnh ghép
-                    hintGO.transform.localScale = new Vector3(pieceWidth, pieceHeight, 1);
-                }
-            }
-        }
+        // *** KHÔNG CẦN TẠO HINT NỮA VÌ CHÚNG TA ĐÃ TẠO NÓ TRONG SCENE ***
         
-        // --- BƯỚC 2: TẠO VÀ XÁO TRỘN CÁC MẢNH GHÉP ---
+        // --- BƯỚC TẠO VÀ XÁO TRỘN CÁC MẢNH GHÉP ---
         for (int r = 0; r < rows; r++)
         {
             for (int c = 0; c < cols; c++)
             {
                 if (pieceIndex >= pieceSpritesToShuffle.Length) continue;
 
-                // Vị trí ĐÚNG (Correct Position)
+                // Vị trí ĐÚNG (Correct Position) - trùng với tâm của từng ô Khuôn
                 float correctX = c * pieceWidth;
                 float correctY = r * pieceHeight;
                 Vector3 correctPos = new Vector3(correctX, correctY, 0);
@@ -102,7 +97,6 @@ public class PuzzleManager : MonoBehaviour
 
     public void CheckCompletion()
     {
-        // ... (Hàm này giữ nguyên)
         int piecesInPlace = 0;
         foreach (var piece in allPieces)
         {
@@ -115,6 +109,8 @@ public class PuzzleManager : MonoBehaviour
         if (piecesInPlace == allPieces.Count)
         {
             Debug.Log("PUZZLE COMPLETED! CONGRATULATIONS!");
+            // Kích hoạt màn hình Win Screen Panel tại đây (nếu đã gán)
+            // if (winScreenPanel != null) winScreenPanel.SetActive(true); 
         }
     }
 }
