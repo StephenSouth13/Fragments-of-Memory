@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
+using System.Linq;
 
 public class SpeedTypingManager : MonoBehaviour
 {
@@ -10,15 +11,12 @@ public class SpeedTypingManager : MonoBehaviour
     public TextMeshProUGUI countText;
     
     // Tham chiếu đến Manager của Jigsaw Puzzle (để trao thưởng)
-    public PuzzleManager puzzleManager; // <-- Gán đối tượng _PuzzleManager vào đây
+    public PuzzleManager puzzleManager; 
 
     // Cấu hình Game
-    public float maxTime = 20f; // Thời gian tối đa (20 giây)
-    public int wordsToComplete = 10; // Số từ cần gõ để chiến thắng
-    
-    // Danh sách từ (Word Pool)
-    // Dễ dàng thêm các từ ngữ yêu thương, tích cực như "HEART", "LOVE", "KINDNESS", "HOPE"
-    public List<string> wordPool = new List<string>() { "HEART", "LOVE", "KINDNESS", "HOPE", "GENTLE", "CARE", "FRIEND", "POST", "DREAM", "LISTEN" };
+    public float maxTime = 20f;
+    public int wordsToComplete = 10;
+    public List<string> wordList = new List<string>() { "KINDNESS", "HOPE", "PEACE", "CHILL", "GENTLE", "CARE", "LETTER", "POST", "FRIEND", "HELLO" };
 
     // Biến trạng thái
     private string currentWord;
@@ -27,9 +25,13 @@ public class SpeedTypingManager : MonoBehaviour
     private float currentTime;
     private bool isGameActive = false;
 
+    // =========================================================================
+    // HÀM KHỞI ĐỘNG CỦA UNITY
+    // =========================================================================
+
     void Start()
     {
-        // ... (Logic khởi động)
+        StartGame();
     }
 
     void Update()
@@ -42,45 +44,113 @@ public class SpeedTypingManager : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            GameOver(); // Hết giờ
+            GameOver();
             return;
         }
 
         // Lắng nghe phím bấm
-        CheckInput();
+        CheckInput(); // <--- ĐỊNH NGHĨA HÀM NÀY PHẢI CÓ
     }
-    
-    // ... (Các hàm CheckInput, CheckLetter, UpdateWordDisplay như trước)
+
+    // =========================================================================
+    // HÀM LOGIC GAME
+    // =========================================================================
+
+    void StartGame()
+    {
+        currentTime = maxTime;
+        wordsCompleted = 0;
+        isGameActive = true;
+        SetNextWord(); // <--- ĐỊNH NGHĨA HÀM NÀY PHẢI CÓ
+    }
+
+    void CheckInput()
+    {
+        if (currentWord.Length == 0) return;
+
+        // Lấy ký tự input từ người dùng
+        foreach (char letter in Input.inputString)
+        {
+            if (char.IsLetter(letter))
+            {
+                CheckLetter(char.ToUpper(letter));
+                return;
+            }
+        }
+    }
+
+    void CheckLetter(char typedLetter)
+    {
+        char targetLetter = currentWord[typeIndex];
+
+        if (typedLetter == targetLetter)
+        {
+            // Gõ đúng
+            typeIndex++;
+            
+            if (typeIndex >= currentWord.Length)
+            {
+                WordCompleted();
+            }
+            else
+            {
+                UpdateWordDisplay();
+            }
+        }
+        else
+        {
+            Debug.Log("Gõ sai!");
+        }
+    }
+
+    void SetNextWord()
+    {
+        if (wordsCompleted >= wordsToComplete)
+        {
+            GameWon();
+            return;
+        }
+
+        // Chọn và hiển thị từ mới
+        currentWord = wordList[Random.Range(0, wordList.Count)].ToUpper();
+        typeIndex = 0;
+        UpdateWordDisplay();
+    }
 
     void WordCompleted()
     {
         wordsCompleted++;
-        // TODO: Phát âm thanh thỏa mãn và hiệu ứng lấp lánh mạnh
+        // TODO: Phát âm thanh thỏa mãn và hiệu ứng lấp lánh nhẹ
         
+        // Chuyển sang từ tiếp theo hoặc kết thúc game
         SetNextWord();
     }
 
-    // ✅ PHẦN TRAO THƯỞNG MẢNH GHÉP QUAN TRỌNG NHẤT
+    void UpdateWordDisplay()
+    {
+        // Tạo chuỗi hiển thị: Tô màu phần đã gõ
+        string typedPart = "<color=#69F0AE>" + currentWord.Substring(0, typeIndex) + "</color>";
+        string remainingPart = currentWord.Substring(typeIndex);
+        wordText.text = typedPart + remainingPart;
+        
+        countText.text = $"Words: {wordsCompleted}/{wordsToComplete}";
+    }
+    
+    // =========================================================================
+    // HÀM KẾT THÚC GAME
+    // =========================================================================
+
     void GameWon()
     {
         isGameActive = false;
-        wordText.text = "🏆 HOÀN THÀNH TỐC ĐỘ! NHẬN MẢNH GHÉP! 🏆";
+        wordText.text = "🏆 THẮNG! NHẬN VẬT PHẨM CHILL! 🏆";
         
-        // ----------------------------------------------------
-        // ✅ GỌI HÀM TRAO THƯỞNG MẢNH GHÉP
-        // Giả định rằng PuzzleManager có hàm để mở khóa một mảnh ghép.
+        // LOGIC TRAO THƯỞNG MẢNH GHÉP
         if (puzzleManager != null)
         {
-            // Tùy chọn 1: Trao 1 mảnh ghép ngẫu nhiên
-            // puzzleManager.UnlockRandomPiece(); 
-            
-            // Tùy chọn 2: Trao mảnh ghép số 0 (ví dụ)
-            // Cần hàm cụ thể trong PuzzleManager để mở khóa Piece.
-            // Ví dụ: puzzleManager.UnlockPiece(0); 
-            
             Debug.Log("Đã gửi tín hiệu mở khóa mảnh ghép tới Puzzle Manager.");
+            // puzzleManager.UnlockRandomPiece(); <-- Cần hàm này trong PuzzleManager
         }
-        // ----------------------------------------------------
     }
 
     void GameOver()
