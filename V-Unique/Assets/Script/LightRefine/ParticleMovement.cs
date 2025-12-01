@@ -5,22 +5,32 @@ public class ParticleMovement : MonoBehaviour
     private Vector3 targetPosition;
     private float moveSpeed = 5f; 
     
-    public bool isGoodParticle = true; // Cần thiết lập trên Prefab
+    public bool isGoodParticle = true;
+    private RefinementManager manager; // THAM CHIẾU MỚI: Liên kết với Manager
 
-    public void SetTarget(Vector3 target)
+    // ✅ HÀM MỚI: Nhận điểm đích VÀ Manager khi được sinh ra
+    public void SetTargetAndManager(Vector3 target, RefinementManager mgr)
     {
         targetPosition = target;
+        manager = mgr;
     }
 
     void Update()
     {
-        // Tạo dòng chảy đơn giản: Di chuyển từ trái sang phải (hoặc theo hướng bạn muốn)
-        transform.Translate(Vector3.left * Time.deltaTime * moveSpeed);
+        // Di chuyển về phía đích
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * moveSpeed);
         
-        // Tùy chọn: Nếu hạt đi quá xa, tự hủy
-        if (transform.position.x < -15f)
+        // ✅ KIỂM TRA ĐẠT ĐÍCH (Tính điểm và Biến mất)
+        // Nếu khoảng cách đến đích nhỏ hơn 0.1f (gần như chạm)
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            Destroy(gameObject);
+            if(manager != null)
+            {
+                // Báo cáo điểm cho Manager
+                manager.ParticleScored(isGoodParticle); 
+            }
+            // ✅ TỰ HỦY: Hạt biến mất ngay lập tức
+            Destroy(gameObject); 
         }
     }
 }
