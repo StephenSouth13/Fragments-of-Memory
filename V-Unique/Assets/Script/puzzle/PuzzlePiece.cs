@@ -7,7 +7,7 @@ public class PuzzlePiece : MonoBehaviour
     public bool isPlaced = false;
 
     // Phạm vi "hít" (Snap Range) - Có thể điều chỉnh trong Editor nếu cần
-    private float snapRange = 2.0f; 
+    private float snapRange = 5.0f; 
 
     // Biến lưu trữ sự bù trừ (offset) để kéo thả mượt mà
     private Vector3 offset; 

@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6508993624105578473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400030456336042372}
+  - component: {fileID: 6894060755474367616}
+  m_Layer: 0
+  m_Name: _PuzzleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400030456336042372
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508993624105578473}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.08, y: 0.92, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6894060755474367616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508993624105578473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ad7917a86beee4fa0056b8a9892028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  piecePrefab: {fileID: 0}
+  allPuzzlePieces:
+  - {fileID: -1175649727, guid: d822466ac0389374986ae9d393d1d273, type: 3}
+  - {fileID: -1955487709, guid: d822466ac0389374986ae9d393d1d273, type: 3}
+  - {fileID: 2044205077, guid: d822466ac0389374986ae9d393d1d273, type: 3}
+  - {fileID: 777361885, guid: d822466ac0389374986ae9d393d1d273, type: 3}
+  - {fileID: 412451502, guid: d822466ac0389374986ae9d393d1d273, type: 3}
+  - {fileID: -1672163921, guid: d822466ac0389374986ae9d393d1d273, type: 3}
+  - {fileID: 1903198739, guid: d822466ac0389374986ae9d393d1d273, type: 3}
+  hintReference: {fileID: 0}
+  cols: 3
+  rows: 3
