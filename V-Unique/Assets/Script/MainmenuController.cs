@@ -19,7 +19,7 @@ public class MainMenuUI : MonoBehaviour
     // --- Nút Options ---
     public void OnOptions()
     {
-        mainMenuPanel.SetActive(false);
+        //mainMenuPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
 
@@ -27,7 +27,7 @@ public class MainMenuUI : MonoBehaviour
     public void OnBack()
     {
         optionsPanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
+        //mainMenuPanel.SetActive(true);
     }
 
     // --- Nút Exit ---
