@@ -122,10 +122,11 @@ public class RefinementManager : MonoBehaviour
         
         // 2. DỪNG TẤT CẢ LỖI
         CancelInvoke("SpawnParticle"); 
-        StopAllCoroutines(); 
-        
+        StopAllCoroutines();
+
         // 3. ✅ XÓA CÁC HẠT CÒN LẠI TRONG SCENE (Fix Lỗi Tồn đọng)
-        ParticleMovement[] remainingParticles = FindObjectsOfType<ParticleMovement>();
+        //ParticleMovement[] remainingParticles = FindObjectsOfType<ParticleMovement>();
+        ParticleMovement[] remainingParticles = FindObjectsByType<ParticleMovement>(FindObjectsSortMode.None);
         foreach (ParticleMovement particle in remainingParticles)
         {
             Destroy(particle.gameObject);
