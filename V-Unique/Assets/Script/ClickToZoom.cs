@@ -3,10 +3,15 @@
 public class ClickToZoom: MonoBehaviour
 {
     public Camera mainCamera;
-    public float ZoomSpeed = 3f; 
+    public float ZoomSpeed = 3f;
+    public float triggerDistance = 2.0f; //delay đợi nv di chuyển đến gần vật thể
+
+    public Transform playerTransform; // Kéo nhân vật vào đây
+    public SkinnedMeshRenderer[] characterParts; // Kéo cái Mesh (da) nhân vật vào đây để tàng hình
 
     private Transform target;
     private bool isZoomed = false;
+    private bool isWaitingForPlayer = false;
 
     private Vector3 originalCameraPosition;
     private Quaternion originalCameraRotation;
@@ -17,53 +22,78 @@ public class ClickToZoom: MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isZoomed)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
                 ZoomTarget zoomTarget = hit.transform.GetComponent<ZoomTarget>();
-                //Tính vị trí camera cần đến (phía trước vật thẻ một đoạn)
                 if (zoomTarget != null && zoomTarget.zoomPoint != null)
                 {
                     target = zoomTarget.zoomPoint;
-                    isZoomed = true; // Bắt đầu zoom
-                    HoverEffect.hoverEnabled = false; // Tắt hiệu ứng hover khi zoom
-                }
-                else
-                {
-                    Debug.LogWarning("ZoomTarget hoặc zoomPoint không được gán!");
+                    isWaitingForPlayer = true;
                 }
             }
         }
+
+        if (isWaitingForPlayer && target != null)
+        {
+            float distance = Vector3.Distance(playerTransform.position, target.position);
+
+            Debug.Log("Khoảng cách: " + distance); 
+
+            if (distance < triggerDistance)
+            {
+                StartZoomIn();
+            }
+            else if (playerTransform.GetComponent<UnityEngine.AI.NavMeshAgent>().velocity.sqrMagnitude < 0.1f
+                     && distance < triggerDistance + 2.0f)
+            {
+                StartZoomIn();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            target = null;
-            isZoomed = false;
-            HoverEffect.hoverEnabled = false;
-            mainCamera.transform.rotation = originalCameraRotation;
-            mainCamera.transform.position = originalCameraPosition; // Quay về vị trí ban đầu
-            
+            StopZoomOut();
         }
-        
-        if (isZoomed)
+
+        if (isZoomed && target != null)
         {
-            Transform zoomTarget = target ?? transform;
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, target.position, ZoomSpeed * Time.deltaTime);
+            mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, target.rotation, ZoomSpeed * Time.deltaTime);
+        }
+        else if (!isZoomed)
+        {
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, originalCameraPosition, ZoomSpeed * Time.deltaTime);
+            mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, originalCameraRotation, ZoomSpeed * Time.deltaTime);
+        }
+    }
 
-            mainCamera.transform.position = Vector3.Lerp(
-                mainCamera.transform.position, zoomTarget.position, ZoomSpeed * Time.deltaTime);
-            mainCamera.transform.rotation = Quaternion.Lerp(
-                mainCamera.transform.rotation, zoomTarget.rotation, ZoomSpeed * Time.deltaTime);
+    void StartZoomIn()
+    {
+        isWaitingForPlayer = false; // Ngừng chờ
+        isZoomed = true;
+        HoverEffect.hoverEnabled = false;
 
-            if (Vector3.Distance(mainCamera.transform.position, zoomTarget.position) < 0.5f)
-            {
-                isZoomed = false;
+        // Tàng hình nhân vật để không bị che tủ sách
+        foreach (var part in characterParts)
+        {
+            if (part != null) part.enabled = false;
+        }
+    }
 
-                if (target != null)
-                {
-                    HoverEffect.hoverEnabled = true;
-                }
-            }
+    void StopZoomOut()
+    {
+        target = null;
+        isZoomed = false;
+        isWaitingForPlayer = false;
+        HoverEffect.hoverEnabled = true;
+
+        // Hiện lại nhân vật
+        foreach (var part in characterParts)
+        {
+            if (part != null) part.enabled = true;
         }
     }
 }
