@@ -67,6 +67,7 @@ public class Book : MonoBehaviour {
     //current flip mode
     FlipMode mode;
 
+
     void Start()
     {
         if (!canvas) canvas=GetComponentInParent<Canvas>();
@@ -445,4 +446,5 @@ public class Book : MonoBehaviour {
         if (onFinish != null)
             onFinish();
     }
+
 }

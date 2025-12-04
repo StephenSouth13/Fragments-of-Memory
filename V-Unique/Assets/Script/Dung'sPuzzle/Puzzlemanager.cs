@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Puzzlemanager : MonoBehaviour
@@ -19,6 +20,8 @@ public class Puzzlemanager : MonoBehaviour
     private int totalPieces;
     private int piecesLocked = 0;
 
+    public string currentLevelID = "Minigame1";
+    public string defaultRoomScene = "Phòng ngủ";
     void Awake()
     {
         Instance = this;
@@ -91,6 +94,9 @@ public class Puzzlemanager : MonoBehaviour
         gameEnded = true;
         Debug.Log("THẮNG RỒI!");
         if (winPanel != null) winPanel.SetActive(true);
+        PlayerPrefs.SetInt(currentLevelID, 1);
+        PlayerPrefs.Save();
+        Debug.Log("Đã lưu chiến thắng!");
     }
 
     void GameOver()
@@ -98,5 +104,16 @@ public class Puzzlemanager : MonoBehaviour
         gameEnded = true;
         Debug.Log("HẾT GIỜ!");
         if (losePanel != null) losePanel.SetActive(true);
+    }
+
+    public void ReturnToRoom()
+    {
+
+        string sceneToLoad = PlayerPrefs.GetString("LastScene", defaultRoomScene);
+
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene(sceneToLoad);
+        Debug.Log("Đang quay về: " + sceneToLoad);
     }
 }

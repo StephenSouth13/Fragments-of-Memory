@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winPanel: {fileID: 1537956123}
-  losePanel: {fileID: 0}
+  losePanel: {fileID: 1991399983}
   timerText: {fileID: 1582038767}
   spawnPoints:
   - {fileID: 1998654657}
@@ -648,6 +648,8 @@ MonoBehaviour:
   - {fileID: 630464111}
   - {fileID: 979323118}
   timeLimit: 60
+  currentLevelID: Minigame1
+  defaultRoomScene: "Ph\xF2ng ng\u1EE7"
 --- !u!4 &401850037
 Transform:
   m_ObjectHideFlags: 0
@@ -2507,9 +2509,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnOptions
+      - m_Target: {fileID: 401850036}
+        m_TargetAssemblyTypeName: Puzzlemanager, Assembly-CSharp
+        m_MethodName: ReturnToRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3495,9 +3497,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenuUI, Assembly-CSharp
-        m_MethodName: OnOptions
+      - m_Target: {fileID: 401850036}
+        m_TargetAssemblyTypeName: Puzzlemanager, Assembly-CSharp
+        m_MethodName: ReturnToRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
