@@ -27,5 +27,20 @@ public class ClickToMove : MonoBehaviour
         {
             animator.SetBool("IsWalking", false);
         }
+
+        if (!agent.pathPending)
+        {
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    animator.SetBool("IsWalking", false);
+                }
+            }
+            else
+            {
+                animator.SetBool("IsWalking", true);
+            }
+        }
     }
 }
