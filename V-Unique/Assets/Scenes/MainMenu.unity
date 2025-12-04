@@ -2214,7 +2214,7 @@ MonoBehaviour:
   instructionImages:
   - {fileID: -1702018509, guid: 67424724874d42f4cb63e45f4a68aa18, type: 3}
   - {fileID: -1223596506, guid: 387508d78dcc42c42b35ac83cb436952, type: 3}
-  - {fileID: -1713741675, guid: af596ec98b4735c4f9894a4379c70bf8, type: 3}
+  - {fileID: -1518108947, guid: c5d9cc9d6dc079844b76e6e1a75522d8, type: 3}
   - {fileID: -1041119417, guid: 75545d9aef46ff24a8d928930927ebd7, type: 3}
 --- !u!114 &477346781
 MonoBehaviour:
