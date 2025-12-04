@@ -2,8 +2,18 @@ using System.Threading.Tasks;
 
 public interface ISaveService 
 {
-    // Cả Local và Cloud Save đều phải có 2 chức năng này
+    /// <summary>
+    /// Lưu đối tượng GameData hiện tại.
+    /// </summary>
     Task SaveGame(GameData data); 
+
+    /// <summary>
+    /// Tải dữ liệu GameData từ nguồn lưu trữ.
+    /// </summary>
     Task<GameData> LoadGame();
+
+    /// <summary>
+    /// Kiểm tra xem có file lưu hiện tại không.
+    /// </summary>
     bool HasSaveFile();
 }

@@ -3,53 +3,74 @@ using System.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
 {
-    // **Đổi sang FirebaseSaveService() khi đã tích hợp Cloud Save**
-    private ISaveService saveService = new LocalSaveService(); 
+    // === CHỌN DỊCH VỤ LƯU TRỮ ===
+    // Hiện tại là Local Save. Đổi thành 'new FirebaseSaveService()' khi chuyển sang Cloud Save.
+    private ISaveService saveService; 
     
-    // Dữ liệu game hiện tại đang chạy trong RAM
+    // Dữ liệu game hiện tại (được giữ lại giữa các Scene)
     public static GameData CurrentGameData { get; private set; }
 
-    void Start()
+    void Awake() 
     {
-        // Chỉ để đảm bảo GameManager không bị hủy khi chuyển Scene
+        // Khắc phục lỗi: Khởi tạo dịch vụ ở đây là an toàn.
+        saveService = new LocalSaveService(); 
+        
+        // Đảm bảo đối tượng này không bị hủy khi chuyển Scene
         DontDestroyOnLoad(gameObject);
     }
 
-    // Gắn vào nút NEW GAME
+    // === CHỨC NĂNG GAMEPLAY ===
+
+    /// <summary>
+    /// Gắn vào nút NEW GAME.
+    /// </summary>
     public void StartNewGame()
     {
         CurrentGameData = new GameData();
-        // Tải Scene Chương I
+        Debug.Log("Bắt đầu game mới (Chapter " + CurrentGameData.currentChapter + ")");
+        // TODO: Tải Scene Chapter I.
     }
 
-    // Gắn vào nút CONTINUE
+    /// <summary>
+    /// Gắn vào nút CONTINUE.
+    /// </summary>
     public async void ContinueGame()
     {
-        if (saveService.HasSaveFile())
-        {
-            GameData loadedData = await saveService.LoadGame();
-            if (loadedData != null)
-            {
-                CurrentGameData = loadedData;
-                Debug.Log("Load Game thành công: Chapter " + CurrentGameData.currentChapter);
-                // Tải Scene và đặt vị trí nhân vật
-                return;
-            }
-        }
+        GameData loadedData = await saveService.LoadGame();
         
-        Debug.Log("Không tìm thấy file lưu. Bắt đầu game mới.");
-        StartNewGame(); // Bắt đầu game mới nếu không có file lưu
+        if (loadedData != null)
+        {
+            CurrentGameData = loadedData;
+            Debug.Log("Tải Game thành công! Chapter " + CurrentGameData.currentChapter + ". Vị trí X: " + CurrentGameData.posX);
+            // TODO: Tải Scene tương ứng với CurrentGameData.currentChapter và đặt vị trí nhân vật.
+        }
+        else
+        {
+            Debug.Log("Không tìm thấy file lưu. Chuyển sang StartNewGame().");
+            StartNewGame(); 
+        }
     }
 
-    // Gọi khi thu thập Ký ức hoặc Quit Game
+    /// <summary>
+    /// Gọi khi thu thập Ký ức hoặc Save & Quit.
+    /// </summary>
     public async void SaveCurrentProgress()
     {
         if (CurrentGameData != null)
         {
-            // Cập nhật các biến (vị trí, thời gian) trước khi lưu
+            // Cập nhật VỊ TRÍ hiện tại của người chơi trước khi lưu
             // Ví dụ: CurrentGameData.posX = PlayerController.Instance.transform.position.x;
-            
+            CurrentGameData.lastSaveTime = DateTime.Now;
+
             await saveService.SaveGame(CurrentGameData);
         }
+    }
+    
+    /// <summary>
+    /// Kiểm tra để ẩn/hiện nút CONTINUE.
+    /// </summary>
+    public bool CanContinueGame()
+    {
+        return saveService.HasSaveFile();
     }
 }
