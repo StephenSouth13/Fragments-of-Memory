@@ -22,6 +22,7 @@ public class Puzzlemanager : MonoBehaviour
 
     public string currentLevelID = "Minigame1";
     public string defaultRoomScene = "Phòng ngủ";
+    public string rewardLetterID = "Thu_1";
     void Awake()
     {
         Instance = this;
@@ -95,6 +96,7 @@ public class Puzzlemanager : MonoBehaviour
         Debug.Log("THẮNG RỒI!");
         if (winPanel != null) winPanel.SetActive(true);
         PlayerPrefs.SetInt(currentLevelID, 1);
+        PlayerPrefs.SetInt("Letter_" + rewardLetterID, 1);
         PlayerPrefs.Save();
         Debug.Log("Đã lưu chiến thắng!");
     }
