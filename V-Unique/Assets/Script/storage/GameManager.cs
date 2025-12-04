@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // === CHỌN DỊCH VỤ LƯU TRỮ ===
