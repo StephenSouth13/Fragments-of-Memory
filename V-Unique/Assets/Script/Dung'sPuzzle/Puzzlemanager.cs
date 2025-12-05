@@ -32,7 +32,7 @@ public class Puzzlemanager : MonoBehaviour
     {
         pieces = FindObjectsOfType<Puzzlepiece>();
 
- 
+
         totalPieces = pieces.Length;
 
         if (spawnPoints.Length < pieces.Length)
