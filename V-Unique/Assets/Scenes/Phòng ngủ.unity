@@ -421,7 +421,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &44180004
 GameObject:
   m_ObjectHideFlags: 0
@@ -5455,7 +5455,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &95638763
 GameObject:
   m_ObjectHideFlags: 0
@@ -5561,7 +5561,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &133407115
 GameObject:
   m_ObjectHideFlags: 0
@@ -5745,7 +5745,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &148637744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5761,7 +5761,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &180346569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5777,7 +5777,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &181145817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5793,7 +5793,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &199509229
 GameObject:
   m_ObjectHideFlags: 0
@@ -6842,7 +6842,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &470326524
 GameObject:
   m_ObjectHideFlags: 0
@@ -7060,7 +7060,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &559013661
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7076,7 +7076,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &564199777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7092,7 +7092,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &574646282
 GameObject:
   m_ObjectHideFlags: 0
@@ -7322,7 +7322,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &584960949
 GameObject:
   m_ObjectHideFlags: 0
@@ -7653,7 +7653,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1001 &604808630
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7904,7 +7904,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &650058328
 GameObject:
   m_ObjectHideFlags: 0
@@ -8451,7 +8451,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &714582723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8467,7 +8467,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &728294164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8483,7 +8483,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &735535517
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8499,7 +8499,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &741376264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8659,7 +8659,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &813796621
 GameObject:
   m_ObjectHideFlags: 0
@@ -9027,7 +9027,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &831883850
 GameObject:
   m_ObjectHideFlags: 0
@@ -9423,7 +9423,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &917896422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9439,7 +9439,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &946073323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9455,7 +9455,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &947805579
 GameObject:
   m_ObjectHideFlags: 0
@@ -9606,7 +9606,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1044490957
 GameObject:
   m_ObjectHideFlags: 0
@@ -9887,7 +9887,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1117681335
 GameObject:
   m_ObjectHideFlags: 0
@@ -10316,7 +10316,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!65 &1138744677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10353,7 +10353,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1199507902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10369,7 +10369,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1238935622
 GameObject:
   m_ObjectHideFlags: 0
@@ -10521,7 +10521,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1269899642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10537,7 +10537,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1279589791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10553,7 +10553,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1290927420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10569,7 +10569,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!65 &1306210403
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10924,7 +10924,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1416939907
 GameObject:
   m_ObjectHideFlags: 0
@@ -11108,7 +11108,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1453564231
 GameObject:
   m_ObjectHideFlags: 0
@@ -11399,7 +11399,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1517596706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11415,7 +11415,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1525903164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11431,7 +11431,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1534569140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11447,7 +11447,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1541283105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11463,7 +11463,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!65 &1544762625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11498,7 +11498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materials: []
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1591764643
 GameObject:
   m_ObjectHideFlags: 0
@@ -11652,7 +11652,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1618132543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11668,7 +11668,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1620508264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11684,7 +11684,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1628301666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11700,7 +11700,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1637600393 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3651978068696521741, guid: ca7f0f60436ffc54ebdbc8b2136a683d, type: 3}
@@ -11721,7 +11721,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!4 &1637600398 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7794414879973959139, guid: ca7f0f60436ffc54ebdbc8b2136a683d, type: 3}
@@ -11957,7 +11957,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1691601660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11973,7 +11973,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1702012198
 GameObject:
   m_ObjectHideFlags: 0
@@ -12125,7 +12125,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1756817685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12141,7 +12141,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1761775863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 180032, guid: fe9bfb5044c0cc646baba1ad7d354100, type: 3}
@@ -12283,7 +12283,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1772854140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12299,7 +12299,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1807890381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12315,7 +12315,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &1808146318
 GameObject:
   m_ObjectHideFlags: 0
@@ -13637,7 +13637,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1810825102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13653,7 +13653,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1810825103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13669,7 +13669,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1810825104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13685,7 +13685,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1810825105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13701,7 +13701,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &1810825112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13745,7 +13745,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!64 &1841273208
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14021,7 +14021,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!65 &1911799611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14193,7 +14193,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!65 &1953761748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14354,7 +14354,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &2010369595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14460,7 +14460,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!114 &2041903373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14476,7 +14476,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!1 &2042129176
 GameObject:
   m_ObjectHideFlags: 0
@@ -14967,7 +14967,7 @@ MonoBehaviour:
   materials:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
-  isMinigameFinished: 0
+  fadeDuration: 2
 --- !u!65 &2118558981
 BoxCollider:
   m_ObjectHideFlags: 0
