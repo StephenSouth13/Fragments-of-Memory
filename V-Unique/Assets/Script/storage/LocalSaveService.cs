@@ -18,7 +18,7 @@ public class LocalSaveService : ISaveService
     }
     
     /// <summary>
-    /// Lưu Game: Chuyển đổi GameData sang JSON và ghi vào file.
+    /// Lưu Game: Chuyển đổi GameData sang JSON và ghi vào file.Vui vẻ
     /// </summary>
     public async Task SaveGame(GameData data)
     {
