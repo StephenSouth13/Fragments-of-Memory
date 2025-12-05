@@ -5460,6 +5460,7 @@ CanvasRenderer:
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &72709751
 GameObject:
   m_ObjectHideFlags: 0
@@ -5568,6 +5569,8 @@ MonoBehaviour:
   PageNoteText: {fileID: 0}
   LoadLevelButton: {fileID: 0}
   LevelIDText: {fileID: 0}
+=======
+>>>>>>> parent of 1c08c0e (Merge branch 'main' of https://github.com/StephenSouth13/Fragments-of-Memory)
 =======
 >>>>>>> parent of 1c08c0e (Merge branch 'main' of https://github.com/StephenSouth13/Fragments-of-Memory)
 =======
@@ -11156,6 +11159,7 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1001 &1358891081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11456,6 +11460,8 @@ MonoBehaviour:
     image: {fileID: 1194512862, guid: e8699e3e3ccdd1e4e94b0d863bcea80b, type: 3}
     levelID: LaptopMinigame1
     sceneName: Zen Typing
+=======
+>>>>>>> parent of 1c08c0e (Merge branch 'main' of https://github.com/StephenSouth13/Fragments-of-Memory)
 =======
 >>>>>>> parent of 1c08c0e (Merge branch 'main' of https://github.com/StephenSouth13/Fragments-of-Memory)
 =======
@@ -14264,6 +14270,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c14a7ac197c4f6b4abf4f03db1be5e80, type: 2}
   - {fileID: 2100000, guid: ee3eda938f7456f4bb863f343fbae0fa, type: 2}
   fadeDuration: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 --- !u!114 &1810825106
