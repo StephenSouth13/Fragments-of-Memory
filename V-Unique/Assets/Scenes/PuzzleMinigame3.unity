@@ -130,13 +130,15 @@ GameObject:
   - component: {fileID: 23909851}
   - component: {fileID: 23909850}
   - component: {fileID: 23909849}
+  - component: {fileID: 23909853}
+  - component: {fileID: 23909852}
   m_Layer: 5
   m_Name: LosePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &23909849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +199,33 @@ RectTransform:
   m_AnchoredPosition: {x: -30.739624, y: 15.369812}
   m_SizeDelta: {x: -594.2981, y: -297.149}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &23909852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23909848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3aa2fb2f3329c4faa7d54ec9852a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 23909853}
+  duration: 0.3
+  useScaleEffect: 1
+--- !u!225 &23909853
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23909848}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &87363585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,6 +1871,7 @@ MonoBehaviour:
   timeLimit: 60
   currentLevelID: Minigame3
   defaultRoomScene: "Ph\xF2ng ng\u1EE7"
+  rewardLetterID: Thu_1
 --- !u!4 &790920760
 Transform:
   m_ObjectHideFlags: 0
@@ -3786,13 +3816,15 @@ GameObject:
   - component: {fileID: 1881670987}
   - component: {fileID: 1881670989}
   - component: {fileID: 1881670988}
+  - component: {fileID: 1881670991}
+  - component: {fileID: 1881670990}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1881670987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3853,6 +3885,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881670986}
   m_CullTransparentMesh: 1
+--- !u!225 &1881670990
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881670986}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &1881670991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881670986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3aa2fb2f3329c4faa7d54ec9852a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 1881670990}
+  duration: 0.3
+  useScaleEffect: 1
 --- !u!1 &1890940813
 GameObject:
   m_ObjectHideFlags: 0

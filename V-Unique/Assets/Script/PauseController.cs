@@ -53,6 +53,7 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
 
-        SceneManager.LoadScene("MainMenu"); 
+        //SceneManager.LoadScene("MainMenu"); 
+        LevelLoader.Instance.LoadLevel("MainMenu");
     }
 }

@@ -35,7 +35,8 @@ public class CutscenePlayer : MonoBehaviour
     void OnVideoFinished(VideoPlayer vp)
     {
         // Khi kết thúc video → load scene
-        SceneManager.LoadScene(nextSceneName);
+        //SceneManager.LoadScene(nextSceneName);
+        LevelLoader.Instance.LoadLevel(nextSceneName);
     }
 }
 
