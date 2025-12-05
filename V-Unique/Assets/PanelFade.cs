@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PanelFade : MonoBehaviour
 {
@@ -37,6 +37,7 @@ public class PanelFade : MonoBehaviour
 
     public void ShowPanel()
     {
+        Debug.Log("Shơ panel");
         fading = true;
         timer = 0f;
     }
