@@ -17,8 +17,13 @@ EditorUserSettings:
     RecentlyUsedSceneGuid-3:
       value: 56540c5307040d595b575e7513775d44144f1d7e742a74612c2a1831e0b9643b
       flags: 0
+<<<<<<< HEAD
     RecentlyUsedSceneGuid-4:
       value: 53030c57570359590b595f7144220844104f4e287f787736787f4862e7b4653b
+=======
+    RecentlyUsedSceneGuid-6:
+      value: 0057015253530b5e595d5c7114270d444516412f2e7f77687c2d1b64bab4313e
+>>>>>>> parent of 019b45e (Merge branch 'main' of https://github.com/StephenSouth13/Fragments-of-Memory)
       flags: 0
     RecentlyUsedSceneGuid-5:
       value: 53520d5750005a59080a0d7446225944424e4e7d2d2d763679284e64b1b53739
@@ -27,7 +32,11 @@ EditorUserSettings:
       value: 0501550004545003090d597244205d4444164828287c71697c794430b7b4606d
       flags: 0
     RecentlyUsedSceneGuid-7:
+<<<<<<< HEAD
       value: 560755570457580e545d557b41715a4442151c2b7d2a7535782c4f37b3e66661
+=======
+      value: 53030c57570359590b595f7144220844104f4e287f787736787f4862e7b4653b
+>>>>>>> parent of 019b45e (Merge branch 'main' of https://github.com/StephenSouth13/Fragments-of-Memory)
       flags: 0
     RecentlyUsedSceneGuid-8:
       value: 5b55515053035f0a5c5d55741676064445151d287c2e73352b7f4832e0e5623e

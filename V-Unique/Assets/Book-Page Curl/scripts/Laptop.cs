@@ -6,15 +6,16 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
-
-// ĐỊNH NGHĨA 'FlipMode' ĐÃ ĐƯỢC XÓA TẠI ĐÂY để tránh lỗi CS0101.
-// Giả định FlipMode đã được định nghĩa trong file Book.cs (hoặc một file riêng).
-
+public enum FlipMode
+{
+    RightToLeft,
+    LeftToRight
+}
 [ExecuteInEditMode]
 public class Laptop : MonoBehaviour {
     public Canvas canvas;
     [SerializeField]
-    RectTransform LaptopPanel;
+    RectTransform BookPanel;
     public Sprite background;
     public Sprite[] bookPages;
     public bool interactable=true;
@@ -37,7 +38,7 @@ public class Laptop : MonoBehaviour {
     {
         get
         {
-            return LaptopPanel.rect.height ;
+            return BookPanel.rect.height ; 
         }
     }
     public Image ClippingPlane;
@@ -70,15 +71,15 @@ public class Laptop : MonoBehaviour {
     void Start()
     {
         if (!canvas) canvas=GetComponentInParent<Canvas>();
-        if (!canvas) Debug.LogError("Laptop should be a child to canvas");
+        if (!canvas) Debug.LogError("Book should be a child to canvas");
 
         Left.gameObject.SetActive(false);
         Right.gameObject.SetActive(false);
         UpdateSprites();
         CalcCurlCriticalPoints();
 
-        float pageWidth = LaptopPanel.rect.width / 2.0f;
-        float pageHeight = LaptopPanel.rect.height;
+        float pageWidth = BookPanel.rect.width / 2.0f;
+        float pageHeight = BookPanel.rect.height;
         NextPageClip.rectTransform.sizeDelta = new Vector2(pageWidth, pageHeight + pageHeight * 2);
 
 
@@ -98,13 +99,13 @@ public class Laptop : MonoBehaviour {
 
     private void CalcCurlCriticalPoints()
     {
-        sb = new Vector3(0, -LaptopPanel.rect.height / 2);
-        ebr = new Vector3(LaptopPanel.rect.width / 2, -LaptopPanel.rect.height / 2);
-        ebl = new Vector3(-LaptopPanel.rect.width / 2, -LaptopPanel.rect.height / 2);
-        st = new Vector3(0, LaptopPanel.rect.height / 2);
+        sb = new Vector3(0, -BookPanel.rect.height / 2);
+        ebr = new Vector3(BookPanel.rect.width / 2, -BookPanel.rect.height / 2);
+        ebl = new Vector3(-BookPanel.rect.width / 2, -BookPanel.rect.height / 2);
+        st = new Vector3(0, BookPanel.rect.height / 2);
         radius1 = Vector2.Distance(sb, ebr);
-        float pageWidth = LaptopPanel.rect.width / 2.0f;
-        float pageHeight = LaptopPanel.rect.height;
+        float pageWidth = BookPanel.rect.width / 2.0f;
+        float pageHeight = BookPanel.rect.height;
         radius2 = Mathf.Sqrt(pageWidth * pageWidth + pageHeight * pageHeight);
     }
 
@@ -113,7 +114,7 @@ public class Laptop : MonoBehaviour {
         if (canvas.renderMode == RenderMode.ScreenSpaceCamera)
         {
             Vector3 mouseWorldPos = canvas.worldCamera.ScreenToWorldPoint(new Vector3(mouseScreenPos.x, mouseScreenPos.y, canvas.planeDistance));
-            Vector2 localPos = LaptopPanel.InverseTransformPoint(mouseWorldPos);
+            Vector2 localPos = BookPanel.InverseTransformPoint(mouseWorldPos);
 
             return localPos;
         }
@@ -126,13 +127,13 @@ public class Laptop : MonoBehaviour {
             Plane p = new Plane(globalEBR, globalEBL, globalSt);
             float distance;
             p.Raycast(ray, out distance);
-            Vector2 localPos = LaptopPanel.InverseTransformPoint(ray.GetPoint(distance));
+            Vector2 localPos = BookPanel.InverseTransformPoint(ray.GetPoint(distance));
             return localPos;
         }
         else
         {
             //Screen Space Overlay
-            Vector2 localPos = LaptopPanel.InverseTransformPoint(mouseScreenPos);
+            Vector2 localPos = BookPanel.InverseTransformPoint(mouseScreenPos);
             return localPos;
         }
     }
@@ -140,18 +141,18 @@ public class Laptop : MonoBehaviour {
     {
         if (pageDragging && interactable)
         {
-            UpdateLaptop();
+            UpdateBook();
         }
     }
-    public void UpdateLaptop()
+    public void UpdateBook()
     {
         f = Vector3.Lerp(f, transformPoint(Input.mousePosition), Time.deltaTime * 10);
         if (mode == FlipMode.RightToLeft)
-            UpdateLaptopRTLToPoint(f);
+            UpdateBookRTLToPoint(f);
         else
-            UpdateLaptopLTRToPoint(f);
+            UpdateBookLTRToPoint(f);
     }
-    public void UpdateLaptopLTRToPoint(Vector3 followLocation)
+    public void UpdateBookLTRToPoint(Vector3 followLocation)
     {
         mode = FlipMode.LeftToRight;
         f = followLocation;
@@ -160,9 +161,9 @@ public class Laptop : MonoBehaviour {
         ShadowLTR.transform.localEulerAngles = new Vector3(0, 0, 0);
         Left.transform.SetParent(ClippingPlane.transform, true);
 
-        Right.transform.SetParent(LaptopPanel.transform, true);
+        Right.transform.SetParent(BookPanel.transform, true);
         Right.transform.localEulerAngles = Vector3.zero;
-        LeftNext.transform.SetParent(LaptopPanel.transform, true);
+        LeftNext.transform.SetParent(BookPanel.transform, true);
 
         c = Calc_C_Position(followLocation);
         Vector3 t1;
@@ -171,24 +172,24 @@ public class Laptop : MonoBehaviour {
         clipAngle = (clipAngle + 180) % 180;
 
         ClippingPlane.transform.localEulerAngles = new Vector3(0, 0, clipAngle - 90);
-        ClippingPlane.transform.position = LaptopPanel.TransformPoint(t1);
+        ClippingPlane.transform.position = BookPanel.TransformPoint(t1);
 
         //page position and angle
-        Left.transform.position = LaptopPanel.TransformPoint(c);
+        Left.transform.position = BookPanel.TransformPoint(c);
         float C_T1_dy = t1.y - c.y;
         float C_T1_dx = t1.x - c.x;
         float C_T1_Angle = Mathf.Atan2(C_T1_dy, C_T1_dx) * Mathf.Rad2Deg;
         Left.transform.localEulerAngles = new Vector3(0, 0, C_T1_Angle - 90 - clipAngle);
 
         NextPageClip.transform.localEulerAngles = new Vector3(0, 0, clipAngle - 90);
-        NextPageClip.transform.position = LaptopPanel.TransformPoint(t1);
+        NextPageClip.transform.position = BookPanel.TransformPoint(t1);
         LeftNext.transform.SetParent(NextPageClip.transform, true);
         Right.transform.SetParent(ClippingPlane.transform, true);
         Right.transform.SetAsFirstSibling();
 
         ShadowLTR.rectTransform.SetParent(Left.rectTransform, true);
     }
-    public void UpdateLaptopRTLToPoint(Vector3 followLocation)
+    public void UpdateBookRTLToPoint(Vector3 followLocation)
     {
         mode = FlipMode.RightToLeft;
         f = followLocation;
@@ -197,9 +198,9 @@ public class Laptop : MonoBehaviour {
         Shadow.transform.localEulerAngles = Vector3.zero;
         Right.transform.SetParent(ClippingPlane.transform, true);
 
-        Left.transform.SetParent(LaptopPanel.transform, true);
+        Left.transform.SetParent(BookPanel.transform, true);
         Left.transform.localEulerAngles = Vector3.zero;
-        RightNext.transform.SetParent(LaptopPanel.transform, true);
+        RightNext.transform.SetParent(BookPanel.transform, true);
         c = Calc_C_Position(followLocation);
         Vector3 t1;
         float clipAngle = CalcClipAngle(c, ebr, out t1);
@@ -207,24 +208,24 @@ public class Laptop : MonoBehaviour {
 
         ClippingPlane.rectTransform.pivot = new Vector2(1, 0.35f);
         ClippingPlane.transform.localEulerAngles = new Vector3(0, 0, clipAngle + 90);
-        ClippingPlane.transform.position = LaptopPanel.TransformPoint(t1);
+        ClippingPlane.transform.position = BookPanel.TransformPoint(t1);
 
         //page position and angle
-        Right.transform.position = LaptopPanel.TransformPoint(c);
+        Right.transform.position = BookPanel.TransformPoint(c);
         float C_T1_dy = t1.y - c.y;
         float C_T1_dx = t1.x - c.x;
         float C_T1_Angle = Mathf.Atan2(C_T1_dy, C_T1_dx) * Mathf.Rad2Deg;
         Right.transform.localEulerAngles = new Vector3(0, 0, C_T1_Angle - (clipAngle + 90));
 
         NextPageClip.transform.localEulerAngles = new Vector3(0, 0, clipAngle + 90);
-        NextPageClip.transform.position = LaptopPanel.TransformPoint(t1);
+        NextPageClip.transform.position = BookPanel.TransformPoint(t1);
         RightNext.transform.SetParent(NextPageClip.transform, true);
         Left.transform.SetParent(ClippingPlane.transform, true);
         Left.transform.SetAsFirstSibling();
 
         Shadow.rectTransform.SetParent(Right.rectTransform, true);
     }
-    private float CalcClipAngle(Vector3 c,Vector3 bookCorner,out  Vector3 t1)
+    private float CalcClipAngle(Vector3 c,Vector3 bookCorner,out  Vector3 t1)
     {
         Vector3 t0 = (c + bookCorner) / 2;
         float T0_CORNER_dy = bookCorner.y - t0.y;
@@ -268,7 +269,7 @@ public class Laptop : MonoBehaviour {
         float F_ST_dx = c.x - st.x;
         float F_ST_Angle = Mathf.Atan2(F_ST_dy, F_ST_dx);
         Vector3 r2 = new Vector3(radius2 * Mathf.Cos(F_ST_Angle),
-            radius2 * Mathf.Sin(F_ST_Angle), 0) + st;
+           radius2 * Mathf.Sin(F_ST_Angle), 0) + st;
         float C_ST_distance = Vector2.Distance(c, st);
         if (C_ST_distance > radius2)
             c = r2;
@@ -301,7 +302,7 @@ public class Laptop : MonoBehaviour {
 
         LeftNext.transform.SetAsFirstSibling();
         if (enableShadowEffect) Shadow.gameObject.SetActive(true);
-        UpdateLaptopRTLToPoint(f);
+        UpdateBookRTLToPoint(f);
     }
     public void OnMouseDragRightPage()
     {
@@ -335,7 +336,7 @@ public class Laptop : MonoBehaviour {
 
         RightNext.transform.SetAsFirstSibling();
         if (enableShadowEffect) ShadowLTR.gameObject.SetActive(true);
-        UpdateLaptopLTRToPoint(f);
+        UpdateBookLTRToPoint(f);
     }
     public void OnMouseDragLeftPage()
     {
@@ -382,13 +383,13 @@ public class Laptop : MonoBehaviour {
             currentPage += 2;
         else
             currentPage -= 2;
-        LeftNext.transform.SetParent(LaptopPanel.transform, true);
-        Left.transform.SetParent(LaptopPanel.transform, true);
-        LeftNext.transform.SetParent(LaptopPanel.transform, true);
+        LeftNext.transform.SetParent(BookPanel.transform, true);
+        Left.transform.SetParent(BookPanel.transform, true);
+        LeftNext.transform.SetParent(BookPanel.transform, true);
         Left.gameObject.SetActive(false);
         Right.gameObject.SetActive(false);
-        Right.transform.SetParent(LaptopPanel.transform, true);
-        RightNext.transform.SetParent(LaptopPanel.transform, true);
+        Right.transform.SetParent(BookPanel.transform, true);
+        RightNext.transform.SetParent(BookPanel.transform, true);
         UpdateSprites();
         Shadow.gameObject.SetActive(false);
         ShadowLTR.gameObject.SetActive(false);
@@ -403,8 +404,8 @@ public class Laptop : MonoBehaviour {
                 () =>
                 {
                     UpdateSprites();
-                    RightNext.transform.SetParent(LaptopPanel.transform);
-                    Right.transform.SetParent(LaptopPanel.transform);
+                    RightNext.transform.SetParent(BookPanel.transform);
+                    Right.transform.SetParent(BookPanel.transform);
 
                     Left.gameObject.SetActive(false);
                     Right.gameObject.SetActive(false);
@@ -419,8 +420,8 @@ public class Laptop : MonoBehaviour {
                 {
                     UpdateSprites();
 
-                    LeftNext.transform.SetParent(LaptopPanel.transform);
-                    Left.transform.SetParent(LaptopPanel.transform);
+                    LeftNext.transform.SetParent(BookPanel.transform);
+                    Left.transform.SetParent(BookPanel.transform);
 
                     Left.gameObject.SetActive(false);
                     Right.gameObject.SetActive(false);
@@ -436,9 +437,9 @@ public class Laptop : MonoBehaviour {
         for (int i = 0; i < steps-1; i++)
         {
             if(mode== FlipMode.RightToLeft)
-            UpdateLaptopRTLToPoint( f + displacement);
+            UpdateBookRTLToPoint( f + displacement);
             else
-                UpdateLaptopLTRToPoint(f + displacement);
+                UpdateBookLTRToPoint(f + displacement);
 
             yield return new WaitForSeconds(0.025f);
         }
