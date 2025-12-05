@@ -1310,13 +1310,15 @@ GameObject:
   - component: {fileID: 718315713}
   - component: {fileID: 718315715}
   - component: {fileID: 718315714}
+  - component: {fileID: 718315717}
+  - component: {fileID: 718315716}
   m_Layer: 5
   m_Name: LosePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &718315713
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1377,6 +1379,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718315712}
   m_CullTransparentMesh: 1
+--- !u!114 &718315716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718315712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3aa2fb2f3329c4faa7d54ec9852a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 718315717}
+  duration: 0.3
+  useScaleEffect: 1
+--- !u!225 &718315717
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718315712}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &769102840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2594,6 +2623,7 @@ MonoBehaviour:
   timeLimit: 60
   currentLevelID: Minigame4
   defaultRoomScene: "Ph\xF2ng ng\u1EE7"
+  rewardLetterID: Thu_1
 --- !u!4 &1512953740
 Transform:
   m_ObjectHideFlags: 0
@@ -3325,13 +3355,15 @@ GameObject:
   - component: {fileID: 1881697555}
   - component: {fileID: 1881697554}
   - component: {fileID: 1881697553}
+  - component: {fileID: 1881697557}
+  - component: {fileID: 1881697556}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1881697553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3392,6 +3424,33 @@ RectTransform:
   m_AnchoredPosition: {x: -30.739624, y: 15.369812}
   m_SizeDelta: {x: -594.2981, y: -297.149}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1881697556
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881697552}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
+--- !u!114 &1881697557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881697552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3aa2fb2f3329c4faa7d54ec9852a1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 1881697556}
+  duration: 0.3
+  useScaleEffect: 1
 --- !u!1 &1900171120
 GameObject:
   m_ObjectHideFlags: 0

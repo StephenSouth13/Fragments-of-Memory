@@ -57,6 +57,7 @@ public class PageInteraction : MonoBehaviour
 
         Debug.Log("Vào game: " + currentLevelID);
         PlayerPrefs.SetString("LastScene", SceneManager.GetActiveScene().name);
-        SceneManager.LoadScene(currentSceneName);
+        //SceneManager.LoadScene(currentSceneName);
+        LevelLoader.Instance.LoadLevel(currentSceneName);
     }
 }

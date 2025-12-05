@@ -94,7 +94,24 @@ public class Puzzlemanager : MonoBehaviour
     {
         gameEnded = true;
         Debug.Log("THẮNG RỒI!");
-        if (winPanel != null) winPanel.SetActive(true);
+        UIPopupEffect effect = winPanel.GetComponent<UIPopupEffect>();
+        if (effect != null)
+        {
+            effect.Show(); // Gọi hàm hiện từ từ
+        }
+        else
+        {
+            // Cách 2: Nếu KHÔNG dùng script hiệu ứng, thì bật thủ công
+            winPanel.SetActive(true);
+
+            //Đảm bảo Alpha = 1 nếu lỡ có CanvasGroup
+            CanvasGroup group = winPanel.GetComponent<CanvasGroup>();
+            if (group != null)
+            {
+                group.alpha = 1f;
+                group.blocksRaycasts = true;
+            }
+        }
         PlayerPrefs.SetInt(currentLevelID, 1);
         PlayerPrefs.SetInt("Letter_" + rewardLetterID, 1);
         PlayerPrefs.Save();
@@ -105,7 +122,24 @@ public class Puzzlemanager : MonoBehaviour
     {
         gameEnded = true;
         Debug.Log("HẾT GIỜ!");
-        if (losePanel != null) losePanel.SetActive(true);
+        UIPopupEffect effect = losePanel.GetComponent<UIPopupEffect>();
+        if (effect != null)
+        {
+            effect.Show(); // Gọi hàm hiện từ từ
+        }
+        else
+        {
+            // Cách 2: Nếu KHÔNG dùng script hiệu ứng, thì bật thủ công
+            losePanel.SetActive(true);
+
+            // QUAN TRỌNG: Đảm bảo Alpha = 1 nếu lỡ có CanvasGroup
+            CanvasGroup group = losePanel.GetComponent<CanvasGroup>();
+            if (group != null)
+            {
+                group.alpha = 1f;
+                group.blocksRaycasts = true;
+            }
+        }
     }
 
     public void ReturnToRoom()
@@ -115,7 +149,8 @@ public class Puzzlemanager : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        SceneManager.LoadScene(sceneToLoad);
+        //SceneManager.LoadScene(sceneToLoad);
+        LevelLoader.Instance.LoadLevel(sceneToLoad);
         Debug.Log("Đang quay về: " + sceneToLoad);
     }
 }
