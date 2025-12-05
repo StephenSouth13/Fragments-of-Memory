@@ -3,12 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
+    public HowToPlayManager howToPlayManager;
     [Header("Panels")]
     public GameObject mainMenuPanel;
     public GameObject optionsPanel;
 
     [Header("Scene Names")]
     public string cutsceneSceneName = "Cutscene";
+    public void OnHowToPlay()
+    {
+        // Gọi hàm mở Panel từ script HowToPlayManager
+        if (howToPlayManager != null)
+        {
+            howToPlayManager.OpenHowToPlay();
+        }
+    }
 
     // --- Nút New Game ---
     public void OnNewGame()
@@ -19,7 +28,7 @@ public class MainMenuUI : MonoBehaviour
     // --- Nút Options ---
     public void OnOptions()
     {
-        mainMenuPanel.SetActive(false);
+        //mainMenuPanel.SetActive(false);
         optionsPanel.SetActive(true);
     }
 
@@ -27,7 +36,7 @@ public class MainMenuUI : MonoBehaviour
     public void OnBack()
     {
         optionsPanel.SetActive(false);
-        mainMenuPanel.SetActive(true);
+        //mainMenuPanel.SetActive(true);
     }
 
     // --- Nút Exit ---

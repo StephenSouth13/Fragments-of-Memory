@@ -1,69 +1,140 @@
 ﻿using UnityEngine;
+using UnityEngine.AI; // <--- BẮT BUỘC CÓ để dùng NavMeshAgent
 
-public class ClickToZoom: MonoBehaviour
+public class ClickToZoom : MonoBehaviour
 {
+    [Header("Cài đặt chung")]
     public Camera mainCamera;
-    public float ZoomSpeed = 3f; 
+    public float ZoomSpeed = 3f;
+    public float triggerDistance = 2.0f;
+    public float maxWaitTime = 2.0f; // Thời gian chờ tối đa nếu bị kẹt
 
-    private Transform target;
+    [Header("Nhân vật")]
+    public Transform playerTransform;
+    public SkinnedMeshRenderer[] characterParts;
+
+    // Các biến nội bộ (Private)
+    private Transform targetZoomPoint; // Điểm sẽ zoom tới
     private bool isZoomed = false;
+    private bool isWaitingForPlayer = false;
+    private float currentWaitTime = 0f; // Biến đếm giờ
 
     private Vector3 originalCameraPosition;
     private Quaternion originalCameraRotation;
+
     private void Start()
     {
-        originalCameraPosition = mainCamera.transform.position;
-        originalCameraRotation = mainCamera.transform.rotation;
+        // Lưu vị trí camera ban đầu để lát nữa zoom out về
+        if (mainCamera != null)
+        {
+            originalCameraPosition = mainCamera.transform.position;
+            originalCameraRotation = mainCamera.transform.rotation;
+        }
     }
+
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        // 1. Xử lý Click chuột
+        if (Input.GetMouseButtonDown(0) && !isZoomed)
         {
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
+                // Kiểm tra xem vật bị bấm có script ZoomTarget không
                 ZoomTarget zoomTarget = hit.transform.GetComponent<ZoomTarget>();
-                //Tính vị trí camera cần đến (phía trước vật thẻ một đoạn)
+
+                // TRƯỜNG HỢP 1: Bấm trúng đồ vật CÓ script ZoomTarget
                 if (zoomTarget != null && zoomTarget.zoomPoint != null)
                 {
-                    target = zoomTarget.zoomPoint;
-                    isZoomed = true; // Bắt đầu zoom
-                    HoverEffect.hoverEnabled = false; // Tắt hiệu ứng hover khi zoom
+                    targetZoomPoint = zoomTarget.zoomPoint;
+                    isWaitingForPlayer = true;
+                    currentWaitTime = 0f; // Reset đồng hồ đếm giờ
+
+                    // Lệnh cho nhân vật đi tới đó
+                    var agent = playerTransform.GetComponent<NavMeshAgent>();
+                    if (agent != null) agent.SetDestination(hit.point);
                 }
+                // TRƯỜNG HỢP 2: Bấm trúng Sàn nhà (hoặc vật KHÔNG CÓ ZoomTarget)
                 else
                 {
-                    Debug.LogWarning("ZoomTarget hoặc zoomPoint không được gán!");
+                    // ---> HỦY LỆNH CHỜ CŨ NGAY LẬP TỨC <---
+                    isWaitingForPlayer = false;
+                    targetZoomPoint = null;
+                    currentWaitTime = 0f;
+
+                    // Code ClickToMove (nếu có) sẽ tự lo việc di chuyển, ở đây chỉ cần hủy zoom thôi
                 }
             }
         }
+
+        // 2. Logic Chờ đợi (Kiểm tra khoảng cách hoặc Time-out)
+        if (isWaitingForPlayer && targetZoomPoint != null)
+        {
+            currentWaitTime += Time.deltaTime; // Đếm giờ
+            float distance = Vector3.Distance(playerTransform.position, targetZoomPoint.position);
+            var agent = playerTransform.GetComponent<NavMeshAgent>();
+
+            // Điều kiện Zoom: Hoặc đến gần, hoặc chờ quá lâu, hoặc đứng im
+            if (distance < triggerDistance)
+            {
+                StartZoomIn();
+            }
+            else if (currentWaitTime >= maxWaitTime) // Hết kiên nhẫn
+            {
+                StartZoomIn();
+            }
+            else if (agent != null && agent.velocity.sqrMagnitude == 0f && currentWaitTime > 0.5f) // Đứng im
+            {
+                StartZoomIn();
+            }
+        }
+
+        // 3. Xử lý Thoát Zoom (Phím ESC)
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            target = null;
-            isZoomed = false;
-            HoverEffect.hoverEnabled = false;
-            mainCamera.transform.rotation = originalCameraRotation;
-            mainCamera.transform.position = originalCameraPosition; // Quay về vị trí ban đầu
-            
+            StopZoomOut();
         }
-        
-        if (isZoomed)
+
+        // 4. Thực hiện hiệu ứng Zoom (Lerp Camera)
+        if (isZoomed && targetZoomPoint != null)
         {
-            Transform zoomTarget = target ?? transform;
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, targetZoomPoint.position, ZoomSpeed * Time.deltaTime);
+            mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, targetZoomPoint.rotation, ZoomSpeed * Time.deltaTime);
+        }
+        else if (!isZoomed) // Trả về vị trí cũ
+        {
+            mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, originalCameraPosition, ZoomSpeed * Time.deltaTime);
+            mainCamera.transform.rotation = Quaternion.Lerp(mainCamera.transform.rotation, originalCameraRotation, ZoomSpeed * Time.deltaTime);
+        }
+    }
 
-            mainCamera.transform.position = Vector3.Lerp(
-                mainCamera.transform.position, zoomTarget.position, ZoomSpeed * Time.deltaTime);
-            mainCamera.transform.rotation = Quaternion.Lerp(
-                mainCamera.transform.rotation, zoomTarget.rotation, ZoomSpeed * Time.deltaTime);
+    // --- CÁC HÀM PHỤ (Nằm ngoài Update) ---
 
-            if (Vector3.Distance(mainCamera.transform.position, zoomTarget.position) < 0.5f)
-            {
-                isZoomed = false;
+    void StartZoomIn()
+    {
+        isWaitingForPlayer = false;
+        isZoomed = true;
 
-                if (target != null)
-                {
-                    HoverEffect.hoverEnabled = true;
-                }
-            }
+        HoverEffect.hoverEnabled = true;
+
+        // Tàng hình nhân vật
+        foreach (var part in characterParts)
+        {
+            if (part != null) part.enabled = false;
+        }
+    }
+
+    void StopZoomOut()
+    {
+        targetZoomPoint = null;
+        isZoomed = false;
+        isWaitingForPlayer = false;
+        HoverEffect.hoverEnabled = false;
+
+        // Hiện lại nhân vật
+        foreach (var part in characterParts)
+        {
+            if (part != null) part.enabled = true;
         }
     }
 }

@@ -19,11 +19,11 @@ public class ObjectButton : MonoBehaviour
 
     void Start()
     {
-        if (miniGameBanner == null)
-        {
-            miniGameBanner = Object.FindFirstObjectByType<MiniGameBanner>();
-            Debug.LogError("MiniGameBanner reference is not set in ObjectButton.");
-        }
+        //if (miniGameBanner == null)
+        //{
+        //    miniGameBanner = Object.FindFirstObjectByType<MiniGameBanner>();
+        //    Debug.LogError("MiniGameBanner reference is not set in ObjectButton.");
+        //}
     }
 
 
@@ -39,9 +39,9 @@ public class ObjectButton : MonoBehaviour
         }
     }
 
-    void CloseBanner()
+    public void CloseBanner()
     {
-               if (miniGameBanner != null && miniGameBanner.banner != null)
+        if (miniGameBanner != null && miniGameBanner.banner != null)
         {
             miniGameBanner.banner.SetActive(false); // Ẩn banner quảng cáo
             Debug.Log("Banner quảng cáo đã được ẩn.");

@@ -2,6 +2,7 @@
 
 public class MiniGameBanner : MonoBehaviour
 {
+    public static MiniGameBanner instance;
     public GameObject banner; // Tham chiếu đến banner quảng cáo
     public void ShowBanner()
     {

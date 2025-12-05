@@ -59,3 +59,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+V-Unique/Packages/packages-lock.json
+*.asset
+V-Unique/UserSettings/Layouts/default-6000.dwlt

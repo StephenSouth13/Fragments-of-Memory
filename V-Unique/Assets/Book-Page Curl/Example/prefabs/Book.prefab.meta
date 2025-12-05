@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fe9bfb5044c0cc646baba1ad7d354100
+timeCreated: 1454784900
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 55588
+  packageName: Book - Page Curl
+  packageVersion: 1.1
+  assetPath: Assets/Book-Page Curl/Example/prefabs/Book.prefab
+  uploadId: 417589
